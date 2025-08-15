@@ -3,7 +3,7 @@
 и в зависимости от входных парамертов определяется пускать или нет посетителя в клуб
  */
 
-package lesson_1;
+package lesson_2;
 
 public class AgeGate {
 

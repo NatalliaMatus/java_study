@@ -1,7 +1,7 @@
 /*
 Захотела усложнить себе задачу и решила квадратное уравнение
  */
-package lesson_1;
+package lesson_2;
 
 import java.util.Arrays;
 
