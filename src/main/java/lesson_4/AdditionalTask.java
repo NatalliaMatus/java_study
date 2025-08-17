@@ -52,6 +52,7 @@ public class AdditionalTask {
             }
             System.out.println("The 2 array of even elements: " + Arrays.toString(array2));
         }
+        scanner.close();
     }
 
     //task2

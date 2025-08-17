@@ -86,7 +86,9 @@ public class OneDimensionalArrays {
         System.out.println("Array value: " + Arrays.toString(array));
         System.out.println("Min value: " + min);
         System.out.println("Max value: " + max);
-        System.out.println("average value: " + avg);
+        System.out.println("Average value: " + avg);
+
+        scanner.close();
     }
 
     //prepate for task4
