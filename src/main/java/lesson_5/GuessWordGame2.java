@@ -35,7 +35,7 @@ public class GuessWordGame2 {
             String progressWord = "*".repeat(secretWord.length());
 
             System.out.println("-".repeat(100));
-            System.out.println(">>>> Your hidden WORD IS: " + secretWord);
+            //System.out.println(">>>> Your hidden WORD IS: " + secretWord);
             System.out.println("The secret word is defined: " + progressWord);
             System.out.println("Enter a letter or word");
 
