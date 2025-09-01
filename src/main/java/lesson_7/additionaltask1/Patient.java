@@ -1,8 +1,8 @@
 package lesson_7.additionaltask1;
 
 public class Patient {
-    private String name;
-    private TreatmentPlan plan;
+    private final String name;
+    private final TreatmentPlan plan;
 
     public Patient(String name, TreatmentPlan plan) {
         this.name = name;

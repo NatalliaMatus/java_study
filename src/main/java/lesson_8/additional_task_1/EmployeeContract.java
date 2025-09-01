@@ -1,7 +1,6 @@
 package lesson_8.additional_task_1;
 
 import java.time.Instant;
-import java.util.Date;
 
 public class EmployeeContract extends Document {
     private Instant endDate;

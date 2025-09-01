@@ -1,8 +1,7 @@
 package lesson_7.task_1;
 
 public class Phone {
-    private String number;
-    private String model;
+    private final String number, model;
     private double weight;
 
     public Phone() {
@@ -20,15 +19,15 @@ public class Phone {
     }
 
     public void receiveCall(String nameCaller){
-        System.out.println("Сalling " + nameCaller);
+        System.out.println("Calling " + nameCaller);
     }
 
     public void receiveCall(String nameCaller, String numberCaller){
-        System.out.println("Сalling " + nameCaller + ", number " + numberCaller);
+        System.out.println("Calling " + nameCaller + ", number " + numberCaller);
     }
 
     public String getNumber(){
-        return this.number;
+        return number;
     }
 
     public void sendMessage(String... numberOfPhone){
@@ -45,5 +44,4 @@ public class Phone {
                 ", weight=" + weight +
                 '}';
     }
-
 }

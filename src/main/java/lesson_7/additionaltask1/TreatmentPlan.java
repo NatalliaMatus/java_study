@@ -1,7 +1,7 @@
 package lesson_7.additionaltask1;
 
 public class TreatmentPlan {
-    private int code;
+    private final int code;
 
     public TreatmentPlan(int code) {
         this.code = code;

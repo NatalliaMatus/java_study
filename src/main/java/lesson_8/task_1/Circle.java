@@ -1,7 +1,7 @@
 package lesson_8.task_1;
 
 class Circle extends Figure {
-    private double radius;
+    private final double radius;
 
     public Circle(double radius) {
         this.radius = radius;

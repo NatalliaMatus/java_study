@@ -5,10 +5,8 @@ import java.time.Instant;
 public abstract class Document implements Printable {
     private String number;
     private Instant docDate;
-
     public Document() {
     }
-
     public Document(String number, Instant docDate) {
         this.number = number;
         this.docDate = docDate;

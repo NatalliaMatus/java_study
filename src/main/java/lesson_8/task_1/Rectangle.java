@@ -1,7 +1,7 @@
 package lesson_8.task_1;
 
 class Rectangle extends Figure {
-    private double width, height;
+    private final double width, height;
 
     public Rectangle(double width, double height) {
         this.width = width;

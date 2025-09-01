@@ -1,7 +1,7 @@
 package lesson_8.task_1;
 
 class Triangle extends Figure {
-    private double a, b, c;
+    private final double a, b, c;
 
     public Triangle(double a, double b, double c) {
         this.a = a;
