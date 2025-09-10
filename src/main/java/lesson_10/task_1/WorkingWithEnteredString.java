@@ -21,20 +21,20 @@ public class WorkingWithEnteredString {
     }
 
     public static String[] dividedInto5Blocks(String numberOfDocument) {
-        int[] hyphenIndexes = new int[4];
-        int pos = -1;
-        for (int k = 0; k < 4; k++) {
-            pos = numberOfDocument.indexOf('-', pos + 1);
-            hyphenIndexes[k] = pos;
-        }
-
-        String[] parts = new String[5];
-        parts[0] = numberOfDocument.substring(0, hyphenIndexes[0]);
-        parts[1] = numberOfDocument.substring(hyphenIndexes[0] + 1, hyphenIndexes[1]);
-        parts[2] = numberOfDocument.substring(hyphenIndexes[1] + 1, hyphenIndexes[2]);
-        parts[3] = numberOfDocument.substring(hyphenIndexes[2] + 1, hyphenIndexes[3]);
-        parts[4] = numberOfDocument.substring(hyphenIndexes[3] + 1);
-        return parts;
+//        int[] hyphenIndexes = new int[4];
+//        int pos = -1;
+//        for (int k = 0; k < 4; k++) {
+//            pos = numberOfDocument.indexOf('-', pos + 1);
+//            hyphenIndexes[k] = pos;
+//        }
+//
+//        String[] parts = new String[5];
+//        parts[0] = numberOfDocument.substring(0, hyphenIndexes[0]);
+//        parts[1] = numberOfDocument.substring(hyphenIndexes[0] + 1, hyphenIndexes[1]);
+//        parts[2] = numberOfDocument.substring(hyphenIndexes[1] + 1, hyphenIndexes[2]);
+//        parts[3] = numberOfDocument.substring(hyphenIndexes[2] + 1, hyphenIndexes[3]);
+//        parts[4] = numberOfDocument.substring(hyphenIndexes[3] + 1);
+        return numberOfDocument.split("-"); //выше сама без сплита решила задачу деления на блоки
     }
 
     public static String findFirstDigitBlocks(String listOfBlocks) {
