@@ -1,6 +1,7 @@
 package lesson_10.task_1;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class WorkingWithEnteredString {
@@ -8,72 +9,31 @@ public class WorkingWithEnteredString {
     private static final Pattern NUBMER_DOC_REGEX = Pattern.compile(
             "^\\d{4}-[A-Za-z]{3}-\\d{4}-[A-Za-z]{3}-\\d[A-Za-z]\\d[A-Za-z]$");
 
-    public static void assertValidFormat(String doc) {
-        if (doc == null || !NUBMER_DOC_REGEX.matcher(doc).matches()) {
+    public static void assertValidFormat(String numberOfDocument) {
+        Matcher matcher = NUBMER_DOC_REGEX.matcher(numberOfDocument);
+        if (!matcher.matches()) {
             throw new IllegalArgumentException("Invalid document number format: should be xxxx-yyy-xxxx-yyy-xyxy," +
                     " where x - number, y - letter");
         }
     }
 
-    public static String readDocumentNumber(Scanner sc) {
+    public static String readDocumentNumber(Scanner scanner) {
         System.out.print("Input number of document: ");
-        return sc.nextLine().trim();
+        return scanner.nextLine();
     }
 
-    public static String[] dividedInto5Blocks(String numberOfDocument) {
-//        int[] hyphenIndexes = new int[4];
-//        int pos = -1;
-//        for (int k = 0; k < 4; k++) {
-//            pos = numberOfDocument.indexOf('-', pos + 1);
-//            hyphenIndexes[k] = pos;
-//        }
-//
-//        String[] parts = new String[5];
-//        parts[0] = numberOfDocument.substring(0, hyphenIndexes[0]);
-//        parts[1] = numberOfDocument.substring(hyphenIndexes[0] + 1, hyphenIndexes[1]);
-//        parts[2] = numberOfDocument.substring(hyphenIndexes[1] + 1, hyphenIndexes[2]);
-//        parts[3] = numberOfDocument.substring(hyphenIndexes[2] + 1, hyphenIndexes[3]);
-//        parts[4] = numberOfDocument.substring(hyphenIndexes[3] + 1);
-        return numberOfDocument.split("-"); //выше сама без сплита решила задачу деления на блоки
+    public static String findFirstDigitBlocks(String numberOfDocument) {
+        String[] parts = numberOfDocument.split("-");
+        return parts[0] + ", " + parts[2];
     }
 
-    public static String findFirstDigitBlocks(String listOfBlocks) {
-        String[] parts = dividedInto5Blocks(listOfBlocks);
-        String result = "";
-        for (String part : parts) {
-            if (checkOnExactlyFourDigits(part)) {
-                result += ";" + part;
-            }
-        }
-        return result.replaceFirst(";", "");
+    public static String maskedOnlyLetterBlocks(String numberOfDocument) {
+        return numberOfDocument.replaceAll("[A-Za-z]{3}", "***");
     }
 
-    public static boolean checkOnExactlyFourDigits(String listOfBlocks) {
-        for (int i = 0; i < 4; i++) {
-            if (!Character.isDigit(listOfBlocks.charAt(i))) return false;
-        }
-        return true;
-    }
 
-    public static String maskedOnlyLetterBlocks(String listOfBlocks) {
-        String[] parts = dividedInto5Blocks(listOfBlocks);
-        String[] masked = new String[parts.length];
-
-        for (int i = 0; i < parts.length; i++) {
-            masked[i] = checkOnExactlyThreeLetters(parts[i]) ? "***" : parts[i];
-        }
-        return String.join("-", masked);
-    }
-
-    private static boolean checkOnExactlyThreeLetters(String listOfBlocks) {
-        for (int i = 0; i < 3; i++) {
-            if (!Character.isLetter(listOfBlocks.charAt(i))) return false;
-        }
-        return true;
-    }
-
-    public static String outputLettersLower(String listOfBlocks) {
-        String[] parts = dividedInto5Blocks(listOfBlocks);
+    public static String outputLettersLower(String numberOfDocument) {
+        String[] parts = numberOfDocument.split("-");
         String b2 = parts[1].toLowerCase();
         String b4 = parts[3].toLowerCase();
         char y1 = Character.toLowerCase(parts[4].charAt(1));
@@ -81,28 +41,14 @@ public class WorkingWithEnteredString {
         return b2 + "/" + b4 + "/" + y1 + "/" + y2;
     }
 
-    public static String outputLettersUpperWithBuilder(String numberOfDocument) {
-        StringBuilder sb = new StringBuilder("Letters:");
-        boolean inLetters = false;
-        boolean needSlash = false;
-
-        for (int i = 0; i < numberOfDocument.length(); i++) {
-            char ch = numberOfDocument.charAt(i);
-
-            if (Character.isLetter(ch)) {
-                if (!inLetters) {
-                    if (needSlash) {
-                        sb.append('/');
-                    }
-                    inLetters = true;
-                    needSlash = true;
-                }
-                sb.append(Character.toUpperCase(ch));
-            } else {
-                inLetters = false;
-            }
-        }
-        return sb.toString();
+    public static StringBuilder outputLettersUpperWithBuilder(String numberOfDocument) {
+        String lettersOnly = numberOfDocument.replaceAll("[^A-Za-z]", "").toUpperCase();
+        StringBuilder builder = new StringBuilder("Letters:");
+        builder.append(lettersOnly, 0, 3).append("/")
+                .append(lettersOnly, 3, 6).append("/")
+                .append(lettersOnly.charAt(6)).append("/")
+                .append(lettersOnly.charAt(7));
+        return builder;
     }
 
     public static boolean checkContainsAbc(String numberOfDocument) {
