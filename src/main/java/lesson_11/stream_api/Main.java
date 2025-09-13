@@ -8,7 +8,7 @@ public class Main {
         System.out.println("task1 ");
         System.out.println(numbers);
         System.out.println("task2 ");
-        System.out.println(deleteDublicate());
+        System.out.println(deleteDuplicates());
         System.out.println("task3 ");
         System.out.println(outputEvenElements());
         System.out.println("task4 ");
@@ -19,5 +19,7 @@ public class Main {
         System.out.println(countTheNumberOfElements());
         System.out.println("task7 ");
         System.out.println(avg());
+        System.out.println("The whole task in one stream ");
+        System.out.println(pipelineResult());
     }
 }

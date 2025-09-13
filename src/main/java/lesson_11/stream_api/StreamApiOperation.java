@@ -2,6 +2,7 @@ package lesson_11.stream_api;
 
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamApiOperation {
@@ -11,10 +12,10 @@ public class StreamApiOperation {
         Random random = new Random();
         return Stream.generate(() -> random.nextInt(20))
                 .limit(10)
-                .toList();
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public static List<Integer> deleteDublicate() {
+    public static List<Integer> deleteDuplicates() {
         return numbers.stream()
                 .distinct()
                 .toList();
@@ -49,5 +50,15 @@ public class StreamApiOperation {
                 .mapToInt(value -> value)
                 .average()
                 .orElse(Double.MIN_VALUE);
+    }
+
+    public static List<Integer> pipelineResult() {
+        return numbers.stream()
+                .distinct()
+                .filter(x -> x % 2 == 0 && x >= 7 && x <= 17)
+                .map(x -> x * 2)
+                .sorted()
+                .limit(4)
+                .collect(Collectors.toList());
     }
 }
