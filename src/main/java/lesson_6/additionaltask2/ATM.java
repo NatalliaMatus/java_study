@@ -34,7 +34,7 @@ public class ATM {
             count20 -= need20;
 
             System.out.println("Withdrawal: " +
-                    need20 + " x banknote 20, " +
+                    need20 + " x banknote 200, " +
                     need50 + " x banknote 50, " +
                     need100 + " x banknote 100");
             return true;

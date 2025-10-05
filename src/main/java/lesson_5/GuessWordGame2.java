@@ -45,6 +45,7 @@ public class GuessWordGame2 {
                 if (userInput.length() > 1) {
                     if (checkWordGuess(userInput, secretWord)) {
                         System.out.println("You guessed the word: " + secretWord);
+                        congratulateAndReplay();
                         startGame();
                         return;
                     } else {
@@ -58,6 +59,7 @@ public class GuessWordGame2 {
                     progressWord = checkLetterGuess(userInput, secretWord, progressWord);
                     if (!progressWord.contains("*")) {
                         System.out.println("You opened all letters! The word was: " + progressWord);
+                        congratulateAndReplay();
                         startGame();
                         return;
                     }
@@ -143,10 +145,14 @@ public class GuessWordGame2 {
 
         String progressWordString = new String(charsProgressWord);
         if (found) {
-            System.out.println("Letter found! Result: " + progressWordString);
+            System.out.println("Letter found! Result: " + String.valueOf(charsProgressWord));
         } else {
-            System.out.println("The letter '" + new String(charsLetterTested) + "' is not in the word! Result: " + progressWordString);
+            System.out.println("The letter '" + String.valueOf(charsProgressWord) + "' is not in the word! Result: " + String.valueOf(charsProgressWord));
         }
         return progressWordString;
+    }
+
+    private static void congratulateAndReplay() {
+        System.out.println("CONGRATULATIONS! YOU WIN!");
     }
 }

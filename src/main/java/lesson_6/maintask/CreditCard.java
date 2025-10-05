@@ -13,7 +13,7 @@ public class CreditCard {
         currentAmountOnTheAccount += accruedAmount;
     }
 
-    public void withdrawl(double reducedAmount) {
+    public void withdraw(double reducedAmount) {
         if (reducedAmount <= currentAmountOnTheAccount) {
             currentAmountOnTheAccount -= reducedAmount;
         } else {
